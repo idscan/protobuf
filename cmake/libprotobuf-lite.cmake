@@ -47,3 +47,7 @@ set_target_properties(libprotobuf-lite PROPERTIES
 add_library(protobuf::libprotobuf-lite ALIAS libprotobuf-lite)
 
 target_link_libraries(libprotobuf-lite PRIVATE utf8_validity)
+if(ANDROID)
+  find_package(android_log REQUIRED)
+  target_link_libraries(libprotobuf-lite PUBLIC android_log::android_log)
+endif()
