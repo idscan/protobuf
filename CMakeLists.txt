@@ -11,6 +11,12 @@ if(protobuf_VERBOSE)
   message(STATUS "Protocol Buffers Configuring...")
 endif()
 
+include("cmake/HunterGate.cmake")
+HunterGate(
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.222.tar.gz"
+    SHA1 "0b88baaa2a9a35b8ce632c57ade66be8dd918afd"
+)
+
 # Project
 project(protobuf C CXX)
 
@@ -160,6 +166,7 @@ endif()
 
 set(_protobuf_FIND_ZLIB)
 if (protobuf_WITH_ZLIB)
+  hunter_add_package(ZLIB)
   find_package(ZLIB)
   if (ZLIB_FOUND)
     set(HAVE_ZLIB 1)
