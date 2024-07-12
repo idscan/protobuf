@@ -210,7 +210,7 @@ if (protobuf_BUILD_SHARED_LIBS)
   set(protobuf_SHARED_OR_STATIC "SHARED")
 else (protobuf_BUILD_SHARED_LIBS)
   set(protobuf_SHARED_OR_STATIC "STATIC")
-  set(ABSL_MSVC_STATIC_RUNTIME ON)
+  set(ABSL_MSVC_STATIC_RUNTIME ${protobuf_MSVC_STATIC_RUNTIME})
   if (protobuf_MSVC_STATIC_RUNTIME)
       set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreaded$<$<CONFIG:Debug>:Debug>)
   else()
@@ -272,6 +272,12 @@ include_directories(
   ${protobuf_SOURCE_DIR}
   ${protobuf_BINARY_DIR}/src
   ${protobuf_SOURCE_DIR}/src)
+
+set(protobuf_ABSL_PROVIDER "package" CACHE STRING "Provider of absl library")
+set_property(CACHE protobuf_ABSL_PROVIDER PROPERTY STRINGS "module" "package")
+
+set(protobuf_JSONCPP_PROVIDER "module" CACHE STRING "Provider of jsoncpp library")
+set_property(CACHE protobuf_JSONCPP_PROVIDER PROPERTY STRINGS "module" "package")
 
 if (protobuf_BUILD_TESTS)
   include(${protobuf_SOURCE_DIR}/cmake/gtest.cmake)
