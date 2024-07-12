@@ -293,7 +293,7 @@ include_directories(
   ${protobuf_BINARY_DIR}/src
   ${protobuf_SOURCE_DIR}/src)
 
-set(protobuf_ABSL_PROVIDER "module" CACHE STRING "Provider of absl library")
+set(protobuf_ABSL_PROVIDER "package" CACHE STRING "Provider of absl library")
 set_property(CACHE protobuf_ABSL_PROVIDER PROPERTY STRINGS "module" "package")
 
 set(protobuf_JSONCPP_PROVIDER "module" CACHE STRING "Provider of jsoncpp library")
