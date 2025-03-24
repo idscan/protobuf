@@ -5,6 +5,7 @@ include(${protobuf_SOURCE_DIR}/src/file_lists.cmake)
 
 if (NOT TARGET jsoncpp_lib)
   if (NOT protobuf_FORCE_FETCH_DEPENDENCIES)
+    hunter_add_package(jsoncpp)
     find_package(jsoncpp)
   endif()
 
