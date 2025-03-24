@@ -1,5 +1,6 @@
 if (NOT TARGET GTest::gmock)
   if (NOT protobuf_FORCE_FETCH_DEPENDENCIES)
+    hunter_add_package(GTest)
     find_package(GTest CONFIG)
   endif()
 
